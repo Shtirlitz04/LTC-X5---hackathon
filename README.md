@@ -1,3 +1,4 @@
+```text
 project-ner/
 │
 ├── data/
@@ -37,3 +38,4 @@ project-ner/
 │   
 ├── .gitignore
 └── requirements.txt
+```
