@@ -1,48 +1,39 @@
-# Структура ML-проекта
-project/
+project-ner/
 │
-├── data/                # Данные
-│   ├── raw/             # Сырые данные (неизменные)
-│   ├── processed/       # Обработанные данные
-│   └── external/        # Внешние источники (если есть)
+├── data/
+│   ├── raw/
+│   │   ├── train.csv
+│   │   ├── submission.csv
+│   │   └── close_submission.csv
+│   └── processed/
 │
-├── notebooks/           # Jupyter ноутбуки для экспериментов
-│   ├── EDA.ipynb        # разведочный анализ данных
-│   └── experiments.ipynb
+├── docs/
+│   └── ТЗ.pdf
 │
-├── src/                 # Основной код проекта
-│   ├── data/            # загрузка и предобработка данных
-│   │   └── make_dataset.py
-│   ├── features/        # создание признаков
-│   │   └── build_features.py
-│   ├── models/          # обучение и инференс
-│   │   ├── train_model.py
-│   │   └── predict_model.py
-│   └── utils/           # вспомогательные функции
+├── models/
+│   └── rubert_ner_v1/
 │
-├── models/              # сохранённые модели (pickle, joblib, h5)
+├── notebooks/
+│   └── rubert.ipynb
 │
-├── reports/             # Отчёты и визуализации
-│   ├── figures/
-│   └── metrics.json
+├── server/
+│   ├── api/
+│   │   ├── routes.py
+│   │   └── __init__.py
+│   ├── static/
+│   │   └── index.html
+│   ├── __init__.py
+│   ├── main.py             # Основной файл для запуска сервера
+│   ├── lifespan.py         # Управление жизненным циклом (загрузка модели)
+│   ├── batcher.py          # Пакетная обработка запросов
+│   └── schemas.py          # Схемы данных Pydantic для API
 │
-├── tests/               # Тесты (юнит и интеграционные)
-│
-├── configs/             # Конфигурации (YAML/JSON)
-│   ├── train_config.yaml
-│   └── model_config.yaml
-│
-├── requirements.txt     # зависимости
-├── pyproject.toml       # или setup.py (если библиотека)
-├── README.md            # описание проекта
-└── .gitignore
-
-
-
-# Описание для LTC-X5---hackathon
-
-Файл submission.csv - пример для файла, который можно отправить в offline-оценку. Файл содержит предсказания базовой модели из инструкции.
-
-Чтобы оценить модель команды необходимо составить такой же файл с предсказаниями модели.
-
-> Важно: offline-оценка не попадает на лидерборд.
+├── src/
+│   ├── __init__.py
+│   ├── config.py
+│   ├── dataset.py
+│   ├── model.py
+│   └── train.py            # Код для ОБУЧЕНИЯ модели
+│   
+├── .gitignore
+└── requirements.txt
