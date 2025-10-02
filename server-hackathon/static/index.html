@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная — Мой сайт</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- Подключаем Vue.js из CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <nav>
+            <a href="/">Главная</a> |
+            <a href="/about">Обо мне</a> |
+            <a href="/docs" target="_blank">API Docs</a>
+        </nav>
+
+        <main>
+            <h1>Добро пожаловать на главную страницу!</h1>
+            <p>Это сайт на <strong>FastAPI + Vue.js</strong> 🚀</p>
+
+            <button @click="fetchData">Получить данные через API</button>
+
+            <div v-if="loading">Загрузка...</div>
+
+            <div v-if="data" class="result">
+                <h3>Ответ от API:</h3>
+                <p><strong>Сообщение:</strong> {{ data.message }}</p>
+                <p><strong>Элементы:</strong> {{ data.items.join(', ') }}</p>
+            </div>
+
+            <div v-if="error" class="error">
+                Ошибка: {{ error }}
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2025 Мой сайт на FastAPI + Vue</p>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
